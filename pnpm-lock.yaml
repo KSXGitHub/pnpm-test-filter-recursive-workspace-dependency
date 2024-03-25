@@ -6,4 +6,37 @@ settings:
 
 importers:
 
-  .: {}
+  packages/a:
+    dependencies:
+      b:
+        specifier: workspace:*
+        version: link:../b
+
+  packages/b:
+    dependencies:
+      c:
+        specifier: workspace:*
+        version: link:../c
+
+  packages/c:
+    dependencies:
+      d:
+        specifier: workspace:*
+        version: link:../d
+
+  packages/d:
+    dependencies:
+      is-negative:
+        specifier: '*'
+        version: 2.1.0
+
+packages:
+
+  /is-negative@2.1.0:
+    resolution: {integrity: sha512-+iCKT4ZcvjRnjkHnQjZ8/qfciLLGD8BFKS0GNR5VjDU6jEiwh899R0GSMkaYcuTNd7fEKXb3Qib0webe6HczNw==}
+    engines: {node: '>=0.10.0'}
+
+snapshots:
+
+  /is-negative@2.1.0:
+    dev: false
